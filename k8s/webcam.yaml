@@ -17,12 +17,12 @@ spec:
     spec:
       containers:
       - name: webcam
-        image: localhost:30500/streamapp:latest
+        image: gvancuts/streamapp:latest
         imagePullPolicy: Always
         command: ["/usr/bin/python3", "webcam.py"]
         env:
           - name: IP_CAMERA
-            value: "192.168.0.250:554/11"
+            value: 192.168.1.138
 
 ---
 apiVersion: apps/v1
