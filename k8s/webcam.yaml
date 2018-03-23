@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: webcam
-        image: gvancuts/streamapp:latest
+        image: localhost:30500/streamapp:latest
         imagePullPolicy: Always
         command: ["/usr/bin/python3", "webcam.py"]
         env:

@@ -12,11 +12,9 @@ from object_detection.utils import label_map_util
 from object_detection.utils import ops as utils_ops
 from object_detection.utils import visualization_utils as vis_util
 
-
-PATH_TO_CKPT = "/streamapp/green-masks/frozen_inference_graph.pb"
-PATH_TO_LABELS = "/streamapp/green-masks/pascal_label_map.pbtxt"
-NUM_CLASSES = 1
-
+PATH_TO_CKPT = "/mobilenet/ssd_mobilenet_v1_coco_2017_11_17/frozen_inference_graph.pb"
+PATH_TO_LABELS = "/streamapp/object_detection/data/mscoco_label_map.pbtxt"
+NUM_CLASSES = 90
 
 detection_graph = tf.Graph()
 with detection_graph.as_default():

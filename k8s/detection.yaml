@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: detection
-        image: gvancuts/streamapp:latest
+        image: localhost:30500/streamapp:latest
         imagePullPolicy: Always
         ports:
           - containerPort: 5000

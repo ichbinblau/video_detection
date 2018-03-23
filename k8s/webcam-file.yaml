@@ -2,24 +2,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webcam
+  name: webcam-file
   labels:
-    app: webcam
+    app: webcam-file
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: webcam
+      app: webcam-file
   template:
     metadata:
       labels:
-        app: webcam
+        app: webcam-file
     spec:
       containers:
-      - name: webcam
-        image: gvancuts/streamapp-file:latest
+      - name: webcam-file
+        image: localhost:30500/streamapp-file:latest
         imagePullPolicy: Always
-        command: ["/usr/bin/python3", "webcam.py"]
+        command: ["/usr/bin/python3", "webcam-file.py"]
         env:
           - name: IP_CAMERA
             value: 192.168.1.138

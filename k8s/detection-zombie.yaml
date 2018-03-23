@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: detection-zombie
-        image: gvancuts/streamapp-zombie:latest
+        image: localhost:30500/streamapp-zombie:latest
         imagePullPolicy: Always
         ports:
           - containerPort: 5001
