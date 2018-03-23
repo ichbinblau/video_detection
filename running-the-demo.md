@@ -57,3 +57,27 @@ To view the output of the detection algorithm, open a couple of brower tabs/wind
 Replace the `k8s-master-ip` string above by the real IP address of your Kubernetes master.
 
 Enjoy!
+
+# Updating the pre-trained model
+
+If you want to try a new, different pre-trained model for Zombies, please follow these steps:
+1. Put the `*.pb` and `*.pbtxt` file (from the pre-trained model) in the [`zombies`](./zombies) folder
+2. Modify the [detection_zombies.py](./detection_zombies.py) if needed. Specifically this section:
+   ```
+   PATH_TO_CKPT = "/streamapp/zombies/frozen_inference_graph.pb"
+   PATH_TO_LABELS = "/streamapp/zombies/pascal_label_map.pbtxt"
+   NUM_CLASSES = 2
+   ```
+   **Note:** you will need to deduct the correct value for `NUM_CLASSES` by looking inside the `*.pbtxt` file
+3. Rebuild your `localhost:30500/streamapp-zombie:latest` container and push it to the private registry
+   ```
+   $ sudo docker build -t localhost:30500/streamapp-zombie:latest -f Dockerfile.zombies .
+   $ sudo docker push localhost:30500/streamapp-zombie:latest
+   
+   ```
+4. Restart the service
+   ```
+   $ kubectl delete -f k8s/detection-zombies.yaml
+   $ kubectl create -f k8s/detection-zombies.yaml
+   ```
+You are now using the new pre-trained model.
