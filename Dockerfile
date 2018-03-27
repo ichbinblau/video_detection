@@ -1,6 +1,7 @@
 FROM tensorflow/tensorflow:latest-py3
 
-RUN apt-get update && apt-get -y install git python-opencv wget protobuf-compiler ttf-mscorefonts-installer
+RUN apt-get update && apt-get -y install git python-opencv wget protobuf-compiler 
+RUN echo "yes" | apt-get install ttf-mscorefonts-installer -y
 RUN fc-cache
 RUN pip3 install Flask opencv-python redis ipython
 
