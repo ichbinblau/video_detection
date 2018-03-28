@@ -1,6 +1,6 @@
 FROM tensorflow/tensorflow:latest-py3
 
-RUN apt-get update && apt-get -y install git python-opencv wget protobuf-compiler debconf-utils
+RUN apt-get update && apt-get -y install git python-opencv wget protobuf-compiler debconf-utils apt-transport-https
 RUN echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections
 RUN apt-get install -y ttf-mscorefonts-installer
 RUN fc-cache
