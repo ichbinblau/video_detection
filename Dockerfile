@@ -1,7 +1,8 @@
 FROM tensorflow/tensorflow:latest-py3
 
-RUN apt-get update && apt-get -y install git python-opencv wget protobuf-compiler 
-RUN echo "yes" | apt-get install ttf-mscorefonts-installer -y
+RUN apt-get update && apt-get -y install git python-opencv wget protobuf-compiler debconf-utils
+RUN echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
+RUN apt-get install -y ttf-mscorefonts-installer
 RUN fc-cache
 RUN pip3 install Flask opencv-python redis ipython
 
